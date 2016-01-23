@@ -3,7 +3,17 @@
 require 'nokogiri'
 require 'mechanize'
 require 'open-uri'
-require './ums-config'
+
+begin
+  require './ums-config'
+rescue LoadError
+  File.open('ums-config.rb', 'w') do |file|
+    file.puts 'USERNAME = ""'
+    file.puts 'PASSWORD = ""'
+  end
+  puts '"ums-config.rb" config file created'
+  exit
+end
 
 agent = Mechanize.new
 agent.get("https://ums.ulbsibiu.ro/ums/do/secure/inregistrare_user")
