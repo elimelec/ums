@@ -41,6 +41,7 @@ links.each do |link|
 
   title = parser.css("td.title_1").first
   title = title.content.strip
+  title = title.split(' - ').last
 
   nota = parser.css(".tabel_info td.celula_tabel_center").last
   next unless nota
