@@ -18,6 +18,7 @@ rescue LoadError
   File.open('ums-config.rb', 'w') do |file|
     file.puts 'USERNAME = ""'
     file.puts 'PASSWORD = ""'
+    file.puts
   end
   puts '"ums-config.rb" config file created'
   exit
