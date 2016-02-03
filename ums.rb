@@ -37,11 +37,6 @@ agent.page.links.find {|link| link.text[/Calculatoare/]}.click
 # note
 agent.page.links.find {|link| link.text[/Note/]}.click
 
-#get values; years
-options = agent.page.parser.css("select option")
-options = options.map {|option| option.attribute("value").value}
-options = options.select {|o| o.to_i > 10}
-
 links = agent.page.links.select {|link| link.href[/vizualizare_situatie_detaliata_evaluari/]}
 
 links.each do |link|
