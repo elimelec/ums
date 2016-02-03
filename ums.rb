@@ -1,20 +1,15 @@
 #!/usr/bin/env ruby
 
-begin
-  require 'nokogiri'
-rescue LoadError
-  puts 'nokogiri gem not installed'
-  puts '   `gem install nokogiri`'
-  exit
+%w(nokogiri mechanize).each do |gem|
+  begin
+    require gem
+  rescue LoadError
+    puts "#{gem} not installed"
+    puts "    `gem install #{gem}`"
+    exit
+  end
 end
 
-begin
-  require 'mechanize'
-rescue LoadError
-  puts 'mechanize gem not installed'
-  puts '   `gem install mechanize`'
-  exit
-end
 require 'open-uri'
 
 begin
